@@ -55,19 +55,26 @@ def subsequent_mask(bs,tar_len,scr_len):
     return torch.from_numpy(subsequent_mask) == 0
 
 if __name__ == '__main__':
-    module = MyModule()
-    model = all(module)
+    # module = MyModule()
+    # model = all(module)
     # a = torch.rand(10)
     # res = module(a)
     # print(res)
     # print(subsequent_mask(3))
-    # q = torch.rand((5,2,100))
-    # print(q.size(-1))
-    # b = torch.rand((300,100))
-    # c = torch.rand((300))
-    #
-    # res = F.linear(q,b,c)
-    # print(res.shape)
+
+
+    # torch.nn.BCELoss
+
+    #线下变换
+
+    q = torch.rand((5,2,100))
+    print(q.size(-1))
+    b = torch.rand((300,100))
+    c = torch.rand((300))
+
+    res = F.linear(q,b,c)
+
+    print(res.shape)
     # tem = res.chunk(3,dim=-1)[0]
     #
     # t = tem.contiguous().view(-1,2*4,25)
@@ -101,19 +108,36 @@ if __name__ == '__main__':
     # print(np.ones(attn_shape))
     # res = np.triu(np.ones(attn_shape),k=1)
     # print(res)
-    v = torch.rand((2,12,100))
-    res = subsequent_mask(2,3,3)
-    print(res.shape)
-    a = torch.randn((2,3,3))
-    print(a)
-    t = a.masked_fill(res == 0 , -1e9)
-    print(t)
-    print(F.softmax(t,dim=-1))
+    # v = torch.rand((2,12,100))
+    # res = subsequent_mask(2,3,3)
+    # print(res.shape)
+    # a = torch.randn((2,3,3))
+    # print(a)
+    # t = a.masked_fill(res == 0 , -1e9)
+    # print(t)
+    # print(F.softmax(t,dim=-1))
     #
     # # 将输入张量与掩码相乘，实现注意力掩码
     # masked_input = input_tensor * attention_mask.unsqueeze(-1)
     #
     # print(masked_input)
+    # P = torch.zeros((1, 512, 768))
+    # print(P.shape[1])
+
+    # t = torch.randn((3,5))
+    # print(t)
+    # t = t.unsqueeze(dim=1)
+    # print(t.shape)
+    # print(t)
+    # t = t.repeat((1,5,1))
+    # print(t.shape)
+    # print(t)
+    # print(t.contiguous().view(-1,5,3))
+
+
+    # print(t)
+    # print(t.shape)
+
 
 
 

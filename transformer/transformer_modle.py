@@ -57,7 +57,9 @@ class Embeddings(nn.Module):
             torch.arange(0, self.embed_dim, 2, dtype=torch.float32) / self.embed_dim)
         P[:, :, 0::2] = torch.sin(X_)
         P[:, :, 1::2] = torch.cos(X_)
+        X = X.transpose(0,1)
         X = X + P[:, :X.shape[1], :].to(X.device)
+        X = X.transpose(0,1)
         return self.dropout(X)
 
 #主要用于注意力计算
@@ -420,11 +422,12 @@ if __name__ == '__main__':
 
     #transfoermer测试
     model = Transformer()
-
-    # 记住第二维是bach_size , 第一维是序列长度
-    src_x = torch.rand((12,3)).to(torch.long)
-    tar_x = torch.rand((16,3)).to(torch.long)
-
-    res = model(src_x,tar_x)
-
-    print(res.shape)
+    print(model)
+    #
+    # # 记住第二维是bach_size , 第一维是序列长度
+    # src_x = torch.rand((12,3)).to(torch.long)
+    # tar_x = torch.rand((16,3)).to(torch.long)
+    #
+    # res = model(src_x,tar_x)
+    #
+    # print(res.shape)
