@@ -103,5 +103,10 @@ class LogisticRegression:
 
 
 if __name__ == '__main__':
-    print(initialize_parameters(5))
+    a = np.random.randn(3,5)
+    b = np.ones((5,2))
+
+    print(a)
+    print(b)
+    print(np.dot(a,b))
 
